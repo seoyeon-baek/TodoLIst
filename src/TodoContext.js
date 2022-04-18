@@ -1,4 +1,4 @@
-import React, {createContext, useContext, useReducer, useRef} from "react";
+import React, {useReducer, createContext, useContext, useRef} from "react";
 
 const initialTodos = [
   {
@@ -27,12 +27,10 @@ function todoReducer(state, action) {
   switch (action.type) {
     case "CREATE":
       return state.concat(action.todo);
-
     case "TOGGLE":
       return state.map(todo =>
         todo.id === action.id ? {...todo, done: !todo.done} : todo
       );
-
     case "REMOVE":
       return state.filter(todo => todo.id !== action.id);
     default:
@@ -59,8 +57,6 @@ export function TodoProvider({children}) {
   );
 }
 
-//TodoProvider로 감싸져 있지 않다면 에러 발생 시키기
-// Context 사용을 위한 커스텀 훅을 만들때 에러처리 해주면 문제점을 빠르게 발견할 수 있다
 export function useTodoState() {
   const context = useContext(TodoStateContext);
   if (!context) {

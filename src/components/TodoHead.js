@@ -31,7 +31,8 @@ const TodoHeadBlock = styled.div`
 
 function TodoHead() {
   const todos = useTodoState(); //리스트 출력
-  const undoneTasks = todos.filter(todo => !todo.done); //완료  안돼있는거 필터링
+  const undoneTasks = todos.filter(todo => !todo.done);
+  //완료  안돼있는거 필터링
 
   const today = new Date();
   const dateString = today.toLocaleDateString("ko-KR", {
@@ -45,7 +46,7 @@ function TodoHead() {
     <TodoHeadBlock>
       <h1>{dateString}</h1>
       <div className="day">{dayName}</div>
-      <div className="tasks-left">할 일 {undoneTasks.lenght}개 남음</div>
+      <div className="tasks-left">할 일 {undoneTasks.length}개 남음</div>
     </TodoHeadBlock>
   );
 }
